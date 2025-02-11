@@ -251,7 +251,7 @@ namespace JDP {
             if (connectionGroupName != null) {
                 request.ConnectionGroupName = connectionGroupName;
             }
-            request.UserAgent = (Settings.UseCustomUserAgent == true) ? Settings.CustomUserAgent : ("Chan Thread Watch " + Version);
+            request.UserAgent = (Settings.UseCustomUserAgent == true) ? Settings.CustomUserAgent : ("Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0");
             if (cacheLastModifiedTime != null) {
                 request.IfModifiedSince = cacheLastModifiedTime.Value;
             }
