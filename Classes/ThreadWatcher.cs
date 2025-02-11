@@ -1267,6 +1267,11 @@ namespace JDP {
                         else if (ex is HTTP404Exception || ex is IOException) {
                             // Fatal problem with this file, skip
                             endTryDownload(DownloadResult.Skipped);
+                        } else if (ex.Message == "The remote server returned an error: (429) Too Many Requests.") { //I really should make this nicer, this is scuffed
+                            // 429, wait 10 seconds
+                            Thread.Sleep(10000);
+                            connectionGroupName = connectionManager.SwapForFreshConnection(connectionGroupName, url);
+                            tryDownload();
                         }
                         else {
                             // Other error, retry
